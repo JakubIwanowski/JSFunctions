@@ -1,7 +1,0 @@
-
-node_modules/*
-.sass-cache/*
-gulpfile.js
-sass/style.scss
-index-ready.html
-package.json
