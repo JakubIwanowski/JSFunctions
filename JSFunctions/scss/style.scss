@@ -1,0 +1,156 @@
+@import 'modules/grid';
+* {
+  margin: 0 0;
+  padding: 0 0 ;
+  box-sizing: border-box;
+}
+body {
+  background-color: #41bd9b;
+.container {
+  max-width: 1200px;
+  width: 100%;
+  height: 100vh;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: collapsing 1s 30s forwards;
+svg {
+  height: 300px;
+  width:  300px;
+  animation:invisible 3s linear 20s forwards;
+
+.path {
+  fill: #41bd9b;
+  stroke-dasharray: 3182.245361328125;
+  stroke-dashoffset: 3182.245361328125;
+  animation: draw 15s linear forwards, coloring 5s linear 9s forwards;
+}
+}
+.lemon {
+  opacity: 0;
+  transform: scale(1);
+  position: relative;
+  width: 70px;
+  height: 125px;
+  bottom: 10px;
+  right: 250px;
+animation: bigger 5s linear 12s forwards, shake 1s 17s ease-in 4 alternate, fallingDown 5s linear 21s 1 forwards, invisible 2s linear 27s forwards;
+}
+}
+.grid-container.menu {
+  transform: scale(0);
+  height: 100vh;
+  animation: makeVisible 1s linear 31s forwards;
+  .row {
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+.col-6 {
+  .heading {
+    font-size: 100px;
+    text-align: center;
+    font-family: "milkshakeregular", Georgia, Serif;
+  }
+  .selection * {
+    text-align: center;
+    margin: 0 auto;
+    display: block;
+  }
+}
+}
+}
+}
+
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes coloring {
+  to {
+    fill: #000000;
+  }
+}
+
+
+@keyframes bigger {
+  from {
+    opacity: 1;
+    transform: scale(0);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@keyframes shake {
+  to {
+    transform: rotate(10deg);
+  }
+}
+@keyframes fallingDown {
+  0% {
+    bottom: 10px;
+  }
+  30% {
+    bottom: -120px;
+    transform: rotate(30deg);
+  }
+  100% {
+    transform: scale(2) rotate(30deg);
+    bottom: -120px
+  }
+}
+
+@keyframes invisible {
+  from {
+    opacity: 1
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+
+@keyframes makeVisible {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+@keyframes collapsing {
+  to {
+    width: 0;
+    height: 0;
+  }
+}
+
+.circle {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  z-index: 2;
+  border-radius: 100%;
+  text-align: center;
+  color: white;
+  box-shadow: 0px 0px 30px 1px black;
+  span {
+    display: block;
+    position: relative;
+    margin-top: 44%;
+  }
+  //opacity: 0;
+  //animation: invisible 10s reverse, invisible 10s 10s;
+}
+@font-face {
+    font-family: 'milkshakeregular';
+    src: url('../fonts/milkshake-webfont.woff2') format('woff2'),
+         url('../fonts/milkshake-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
