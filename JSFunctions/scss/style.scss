@@ -154,3 +154,16 @@ animation: bigger 5s linear 12s forwards, shake 1s 17s ease-in 4 alternate, fall
     font-style: normal;
 
 }
+@keyframes shake2 {
+  from {
+    transform: rotate(-10deg);
+  }
+  to {
+    transform: rotate(10deg);
+  }
+}
+.clock {
+  width: 100px;
+  height: 100px;
+  animation: shake2 0.5s infinite alternate;
+}
