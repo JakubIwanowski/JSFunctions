@@ -5,6 +5,7 @@ import ReactDOM from 'react-dom';
 class Iteration extends React.Component {
 componentDidMount() {
   $('.start').on('click', function(event) {
+  $('.info').css('display', 'none');
    event.preventDefault();
    var divNumber = $('.functionValue').val();
    $('.functionValue').val('');
@@ -44,7 +45,11 @@ componentDidMount() {
 
   render() {
     return(
+    <div>
     <button className="start">Start your function</button>
+    <p className='info'>Iteration is a process of repeating a given function X times. Insert the number
+    which will indicate how many times you want your function to repeat. </p>
+    </div>
     )
   }
 }
@@ -54,23 +59,27 @@ constructor(props) {
   super(props);
   this.state = {
     counter: 0,
-    clear: <p onClick={(e)=>this.abort(e)}>x</p>
+    clear: ''
   }
 }
-abort() {
+abort(e) {
+  e.preventDefault();
   clearInterval(this.myInterval);
   clearInterval(this.inter);
   this.setState({
-    counter: 0
+    counter: 0,
+    clear: ''
   })
 }
 handleClick(e) {
   e.preventDefault();
+  $('.info').css('display', 'none');
   let txt = document.querySelector('.functionValue');
   let counter = parseInt(txt.value);
 
   this.setState({
-    counter : counter
+    counter : counter,
+    clear: <button onClick={(e)=>this.abort(e)}>Stop function</button>
   })
   this.myInterval = setInterval(() => {
     let main = document.querySelector('body');
@@ -96,8 +105,12 @@ handleClick(e) {
     return(
       <div>
       <button className="start" onClick={(e)=>this.handleClick(e)}>Start your function</button>
-      <p>{this.state.counter}</p>
       {this.state.clear}
+      <p className='info'>Iteration is a process of repeating a given function X times. Insert the number
+      which will indicate how many times you want your function to repeat. </p>
+
+      <p className='counter'>{this.state.counter}</p>
+
     </div>
     )
   }
@@ -107,26 +120,28 @@ class Timer extends React.Component {
 constructor(props) {
   super(props);
   this.state = {
-    counter: '',
+    counter: 0,
   }
 }
-abort() {
+abort(e) {
+  e.preventDefault();
   this.setState({
     clock: '',
     clear: '',
-    counter: ''
+    counter: 0
   })
   clearTimeout(this.myTimer);
   clearInterval(this.inter);
 }
   handleClick(e) {
     e.preventDefault();
+    $('.info').css('display', 'none');
     let txt = document.querySelector('.functionValue');
     let counter = parseInt(txt.value);
 
     this.setState({
       counter : counter,
-      clear: <p onClick={(e)=>this.abort(e)}>x</p>
+      clear: <button onClick={(e)=>this.abort(e)}>Stop function</button>
     })
     this.myTimer = setTimeout(() => {
       console.log('dd');
@@ -152,8 +167,12 @@ render() {
   return(
     <div>
     <button className="start" onClick={(e)=>this.handleClick(e)}>Start your function</button>
-    <p>{this.state.counter}</p>
     {this.state.clear}
+    <p className='info'>Iteration is a process of repeating a given function X times. Insert the number
+    which will indicate how many times you want your function to repeat. </p>
+
+    <p className='counter'>{this.state.counter}</p>
+
     {this.state.clock}
   </div>
   )
@@ -161,9 +180,65 @@ render() {
 }
 
 class Chart extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: []
+    }
+
+  }
+  handleClick(e) {
+    e.preventDefault();
+    $('.info').css('display', 'none');
+    $('.chart').each(function() {
+      let hei = $(this).data('amount');
+      $(this).css('display', 'inherit');
+      $(this).animate({
+        height: hei + 'px'
+      }, 1000);
+
+    console.log($(this).data('amount'));
+    })
+  }
+ componentDidMount() {
+   fetch('https://api-v3.mojepanstwo.pl/dane/sejm_kluby').then(response =>{
+     console.log(response);
+     return response.json();
+   }).then(response => {
+     const ln = response.Dataobject;
+     let newState = this.state.data
+     for (let i = 0; i < ln.length; i++) {
+       newState.push(ln[i]);
+     }
+     this.setState({
+       data: newState
+     })
+   });
+ }
   render() {
     return(
+      <div>
       <button className="start" onClick={(e)=>this.handleClick(e)}>Start your function</button>
+      <p className='info'>Iteration is a process of repeating a given function X times. Insert the number
+      which will indicate how many times you want your function to repeat. </p>
+      <div className='charts-holder'>
+        {
+          this.state.data.map(item=>{
+          return(
+
+            <div className='chart' data-amount={item.data['sejm_kluby.liczba_poslow']}>
+            <p className='party-info'>{item.data['sejm_kluby.nazwa']} {item.data['sejm_kluby.liczba_poslow']}</p>
+
+        </div>
+
+      )
+          })
+        }
+
+
+      </div>
+
+    </div>
     )
   }
 }
@@ -194,6 +269,8 @@ class Maps extends React.Component {
     return(
       <div>
       <button className="start" onClick={(e)=>this.handleClick(e)}>Start your function</button>
+      <p className='info'>Iteration is a process of repeating a given function X times. Insert the number
+      which will indicate how many times you want your function to repeat. </p>
       {this.state.numbers}
     </div>
     )
@@ -209,6 +286,7 @@ class Reduce extends React.Component {
   }
   handleClick(e) {
     e.preventDefault();
+    $('.info').css('display', 'none');
     let arr = [];
     let numbers =arr.push(document.querySelector('.functionValue').value.match(/\d+/g));
     let num = arr[0];
@@ -221,6 +299,8 @@ class Reduce extends React.Component {
     return(
       <div>
       <button className="start" onClick={(e)=>this.handleClick(e)}>Start your function</button>
+      <p className='info'>Iteration is a process of repeating a given function X times. Insert the number
+      which will indicate how many times you want your function to repeat. </p>
       {this.state.numbers}
     </div>
     )
@@ -231,6 +311,7 @@ class Filter extends React.Component {
 
  handleClick(e) {
    e.preventDefault();
+   $('.info').css('display', 'none');
    let boxes = document.querySelectorAll('.check');
    for (var i = 0; i < boxes.length; i++) {
       if(!boxes[i].checked) {
@@ -243,12 +324,14 @@ class Filter extends React.Component {
     return(
       <div>
       <button className="start" onClick={(e)=>this.handleClick(e)}>Start your function</button>
+      <p className='info'>Iteration is a process of repeating a given function X times. Insert the number
+      which will indicate how many times you want your function to repeat. </p>
       <ul>
-      <li><input className='check' type='checkbox' name='1' style={{display:'inline'}}  />77</li>
-      <li><input className='check' type='checkbox' name='2' style={{display:'inline'}}  />77</li>
-      <li><input className='check' type='checkbox' name='3' style={{display:'inline'}}  />77</li>
-      <li><input className='check' type='checkbox' name='4' style={{display:'inline'}}  />77</li>
-      <li><input className='check' type='checkbox' name='5' style={{display:'inline'}}  />77</li>
+      <li><input className='check' type='checkbox' name='1' style={{display:'inline'}}  /><i style={{display:'inline'}} className="devicon-github-plain colored icon"></i></li>
+      <li><input className='check' type='checkbox' name='2' style={{display:'inline'}}  /><i style={{display:'inline'}} className="devicon-html5-plain colored icon"></i></li>
+      <li><input className='check' type='checkbox' name='3' style={{display:'inline'}}  /><i  style={{display:'inline'}} className="devicon-linux-plain colored icon"></i></li>
+      <li><input className='check' type='checkbox' name='4' style={{display:'inline'}}  /><i style={{display:'inline'}} className="devicon-react-original colored icon"></i></li>
+      <li><input className='check' type='checkbox' name='5' style={{display:'inline'}}  /><i style={{display:'inline'}} className="devicon-webpack-plain colored icon"></i></li>
     </ul>
     </div>
     )
@@ -337,18 +420,25 @@ text(event) {
     let button = null;
     if (this.state.value === 'Set iteration number') {
       button = <Iteration />;
+      $('.functionValue').css('display', 'inherit');
     } else if (this.state.value === 'Set interval time'){
       button = <Interval />;
+      $('.functionValue').css('display', 'inherit');
     } else if (this.state.value === 'Set a timer') {
       button = <Timer />;
+      $('.functionValue').css('display', 'inherit');
     } else if (this.state.value === 'Generate a chart') {
       button = <Chart />;
+      $('.functionValue').css('display', 'none');
     } else if (this.state.value === 'Map elements') {
       button = <Maps />;
+      $('.functionValue').css('display', 'inherit');
     } else if (this.state.value === 'Reduce elements') {
       button = <Reduce />;
+      $('.functionValue').css('display', 'inherit');
     } else if (this.state.value === 'Filter elements') {
       button = <Filter />;
+      $('.functionValue').css('display', 'none');
     } else if (this.state.value === 'Write') {
       button = <Write text={this.state.text}/>
     }
@@ -367,11 +457,10 @@ text(event) {
                 <option  value='Map elements'>Map</option>
                 <option  value='Reduce elements'>Reduce</option>
                 <option value='Filter elements'>Filter</option>
-                <option value='Write'>Write</option>
               </select>
                 <input type="text" placeholder={this.state.value} className="functionValue"
                 value={this.state.text} onChange={(e) => this.text(e)}/>
-             {button}
+                 {button}
           </form>
           </div>
         </div>
