@@ -5,3 +5,5 @@ gulpfile.js
 sass/style.scss
 index-ready.html
 package.json
+package-lock.json
+webpack.config.js
