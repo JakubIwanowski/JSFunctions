@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom';
 class Iteration extends React.Component {
 componentDidMount() {
   $('.start').on('click', function(event) {
-  $('.info').css('display', 'none');
+  $('.info').fadeOut();
    event.preventDefault();
    var divNumber = $('.functionValue').val();
    $('.functionValue').val('');
@@ -41,14 +41,15 @@ componentDidMount() {
 
 
 }
-
-
+hide() {
+    $('.info').fadeOut();
+}
   render() {
     return(
     <div>
     <button className="start">Start your function</button>
-    <p className='info'>Iteration is a process of repeating a given function X times. Insert the number
-    which will indicate how many times you want your function to repeat. </p>
+    <p className='info' onClick={(e)=>this.hide(e)}>Iteration is a process of repeating a given function n times. Insert the number
+    which will indicate how many times you want your function to repeat.(Click on me to hide me) </p>
     </div>
     )
   }
@@ -73,7 +74,7 @@ abort(e) {
 }
 handleClick(e) {
   e.preventDefault();
-  $('.info').css('display', 'none');
+  $('.info').fadeOut();
   let txt = document.querySelector('.functionValue');
   let counter = parseInt(txt.value);
 
@@ -100,14 +101,15 @@ handleClick(e) {
   }, 1000)
 
 }
-
+hide() {
+  $('.info').fadeOut();
+}
   render() {
     return(
       <div>
       <button className="start" onClick={(e)=>this.handleClick(e)}>Start your function</button>
       {this.state.clear}
-      <p className='info'>Iteration is a process of repeating a given function X times. Insert the number
-      which will indicate how many times you want your function to repeat. </p>
+      <p className='info' onClick={(e)=>this.hide(e)}>Iterval will start a given function every n seconds.(Click on me to hide me)</p>
 
       <p className='counter'>{this.state.counter}</p>
 
@@ -135,7 +137,7 @@ abort(e) {
 }
   handleClick(e) {
     e.preventDefault();
-    $('.info').css('display', 'none');
+    $('.info').fadeOut();
     let txt = document.querySelector('.functionValue');
     let counter = parseInt(txt.value);
 
@@ -161,15 +163,16 @@ abort(e) {
       }
     }, 1000)
   }
-
+  hide() {
+    $('.info').fadeOut();
+  }
 
 render() {
   return(
     <div>
     <button className="start" onClick={(e)=>this.handleClick(e)}>Start your function</button>
     {this.state.clear}
-    <p className='info'>Iteration is a process of repeating a given function X times. Insert the number
-    which will indicate how many times you want your function to repeat. </p>
+    <p className='info' onClick={(e)=>this.hide(e)}>Timer will start a function after n seconds.(Click on me to hide me)</p>
 
     <p className='counter'>{this.state.counter}</p>
 
@@ -185,11 +188,14 @@ class Chart extends React.Component {
     this.state = {
       data: []
     }
-
   }
+    hide() {
+      $('.info').fadeOut();
+    }
+
   handleClick(e) {
     e.preventDefault();
-    $('.info').css('display', 'none');
+    $('.info').fadeOut();
     $('.chart').each(function() {
       let hei = $(this).data('amount');
       $(this).css('display', 'inherit');
@@ -219,8 +225,8 @@ class Chart extends React.Component {
     return(
       <div>
       <button className="start" onClick={(e)=>this.handleClick(e)}>Start your function</button>
-      <p className='info'>Iteration is a process of repeating a given function X times. Insert the number
-      which will indicate how many times you want your function to repeat. </p>
+      <p className='info' onClick={(e)=>this.hide(e)}>This option uses different functions in order to visualize data.
+      It takes information about the humber of members of parliamentary clubs in the Polish Parliament  from an API of 'Moje państwo', an NGO and puts it into a chart  </p>
       <div className='charts-holder'>
         {
           this.state.data.map(item=>{
@@ -249,8 +255,12 @@ class Maps extends React.Component {
       numbers: ''
     }
   }
+  hide() {
+    $('.info').fadeOut();
+  }
   handleClick(e) {
     e.preventDefault();
+    $('.info').fadeOut();
     let arr = [];
     let numbers =arr.push(document.querySelector('.functionValue').value.match(/\d+/g));
     let num = arr[0];
@@ -269,8 +279,8 @@ class Maps extends React.Component {
     return(
       <div>
       <button className="start" onClick={(e)=>this.handleClick(e)}>Start your function</button>
-      <p className='info'>Iteration is a process of repeating a given function X times. Insert the number
-      which will indicate how many times you want your function to repeat. </p>
+      <p className='info' onClick={(e)=>this.hide(e)}>Map function will create a new array by using a given function on every element of the first array.
+      This function will give a square of every number in the input. Please seperate numbers in the input with whitespace.(Click on me to hide me) </p>
       {this.state.numbers}
     </div>
     )
@@ -284,9 +294,12 @@ class Reduce extends React.Component {
       numbers: ''
     }
   }
+  hide() {
+    $('.info').fadeOut();
+  }
   handleClick(e) {
     e.preventDefault();
-    $('.info').css('display', 'none');
+    $('.info').fadeOut();
     let arr = [];
     let numbers =arr.push(document.querySelector('.functionValue').value.match(/\d+/g));
     let num = arr[0];
@@ -299,8 +312,9 @@ class Reduce extends React.Component {
     return(
       <div>
       <button className="start" onClick={(e)=>this.handleClick(e)}>Start your function</button>
-      <p className='info'>Iteration is a process of repeating a given function X times. Insert the number
-      which will indicate how many times you want your function to repeat. </p>
+      <p className='info' onClick={(e)=>this.hide(e)}>Reduce function will apply a function to each element
+      in an array and will reduce them to a single value. In this example the function will multiply elements, for example:
+    [1,2,3] will give the following result:[6]. Please seperate numbers in the input with whitespace.(Click on me to hide me) </p>
       {this.state.numbers}
     </div>
     )
@@ -311,7 +325,7 @@ class Filter extends React.Component {
 
  handleClick(e) {
    e.preventDefault();
-   $('.info').css('display', 'none');
+   $('.info').fadeOut();
    let boxes = document.querySelectorAll('.check');
    for (var i = 0; i < boxes.length; i++) {
       if(!boxes[i].checked) {
@@ -319,19 +333,21 @@ class Filter extends React.Component {
       }
    }
  }
-
+ hide() {
+   $('.info').fadeOut();
+ }
   render() {
     return(
       <div>
       <button className="start" onClick={(e)=>this.handleClick(e)}>Start your function</button>
-      <p className='info'>Iteration is a process of repeating a given function X times. Insert the number
-      which will indicate how many times you want your function to repeat. </p>
+      <p className='info' onClick={(e)=>this.hide(e)}>Filter function will create a new array with elements that pass a test provided
+      with a function. Check the images you want to keep visible and click 'Start your function'.(Click on me to hide me) </p>
       <ul>
-      <li><input className='check' type='checkbox' name='1' style={{display:'inline'}}  /><i style={{display:'inline'}} className="devicon-github-plain colored icon"></i></li>
-      <li><input className='check' type='checkbox' name='2' style={{display:'inline'}}  /><i style={{display:'inline'}} className="devicon-html5-plain colored icon"></i></li>
-      <li><input className='check' type='checkbox' name='3' style={{display:'inline'}}  /><i  style={{display:'inline'}} className="devicon-linux-plain colored icon"></i></li>
-      <li><input className='check' type='checkbox' name='4' style={{display:'inline'}}  /><i style={{display:'inline'}} className="devicon-react-original colored icon"></i></li>
-      <li><input className='check' type='checkbox' name='5' style={{display:'inline'}}  /><i style={{display:'inline'}} className="devicon-webpack-plain colored icon"></i></li>
+      <li className='image-icon'><input className='check' type='checkbox' name='1' style={{display:'inline'}}  /><i style={{display:'inline'}} className="devicon-github-plain colored icon"></i></li>
+      <li className='image-icon'><input className='check' type='checkbox' name='2' style={{display:'inline'}}  /><i style={{display:'inline'}} className="devicon-html5-plain colored icon"></i></li>
+      <li className='image-icon'><input className='check' type='checkbox' name='3' style={{display:'inline'}}  /><i  style={{display:'inline'}} className="devicon-linux-plain colored icon"></i></li>
+      <li className='image-icon'><input className='check' type='checkbox' name='4' style={{display:'inline'}}  /><i style={{display:'inline'}} className="devicon-react-original colored icon"></i></li>
+      <li className='image-icon'><input className='check' type='checkbox' name='5' style={{display:'inline'}}  /><i style={{display:'inline'}} className="devicon-webpack-plain colored icon"></i></li>
     </ul>
     </div>
     )

@@ -48,7 +48,7 @@ animation: bigger 5s linear 12s forwards, shake 1s 17s ease-in 4 alternate, fall
     justify-content: center;
 .col-6 {
   .heading {
-    font-size: 100px;
+    font-size: 13vw;
     text-align: center;
     font-family: "milkshakeregular", Georgia, Serif;
   }
@@ -56,10 +56,12 @@ animation: bigger 5s linear 12s forwards, shake 1s 17s ease-in 4 alternate, fall
     text-align: center;
     margin: 0 auto;
     display: block;
+    position: relative;
     .charts-holder {
       display: flex;
       flex-direction: row;
       margin-top: 30px;
+      margin-bottom: 30px;
       height: 300px;
     .chart {
       display: none;
@@ -87,6 +89,23 @@ animation: bigger 5s linear 12s forwards, shake 1s 17s ease-in 4 alternate, fall
         }
       }
     }
+  }
+  .image-icon{
+    margin-bottom: 10px;
+  .icon {
+    font-size: 30px;
+    margin-left: 10px;
+    vertical-align: middle;
+  }
+}
+  .info {
+    border: 1px solid gray;
+    border-radius: 10px;
+    text-align: center;
+    background: transparentize(black, 0.93);
+    position: absolute;
+    z-index: 2;
+    padding: 4px;
   }
   }
 }
@@ -165,7 +184,7 @@ animation: bigger 5s linear 12s forwards, shake 1s 17s ease-in 4 alternate, fall
   width: 100px;
   height: 100px;
   position: absolute;
-  z-index: 2;
+  z-index: 5;
   border-radius: 100%;
   text-align: center;
   color: white;
@@ -199,15 +218,8 @@ animation: bigger 5s linear 12s forwards, shake 1s 17s ease-in 4 alternate, fall
   height: 100px;
   animation: shake2 0.5s infinite alternate;
 }
-.info {
-  border: 3px solid gray;
-  border-radius: 10px;
-  text-align: center;
-  background: transparentize(black, 0.9);
-}
-.icon {
-  font-size: 30px;
-}
+
+
 .counter {
   padding: 0 auto;
   width: 30px;
