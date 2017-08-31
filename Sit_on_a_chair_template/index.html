@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device=width, initial-scale=1.0">
+    <title>Chairs</title>
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <link rel="stylesheet" href="css/stylesheet.css">
+</head>
+
+<body>
+ <header class="header">
+   <div class="container">
+   <h4 class="logo-header"> SIT <span>ON</span> CHAIR</h4>
+   <ul class="navigation">
+     <li class="navigation__el nav-el__1"><a href="#">O FIRMIE</a>
+       <ul class="submenu-1">
+         <li class="submenu-1__el">Aktualności</li>
+         <li class="submenu-1__el">Nasz Team</li>
+         <li class="submenu-1__el">Historia</li>
+       </ul>
+     </li>
+     <li class="navigation__el"><a href="#">GALERIA</a></li>
+     <li class="navigation__el"><a href="#">KONTAKT</a></li>
+  </div>
+ </header>
+
+ <div class="maingallery">
+   <div class="container">
+     <div class="arrow_left"></div>
+     <div class="chair">
+       <img src="images/orange_chair.png">
+    </div>
+  <div class="maintext">
+    <h1>SIT <span>ON</span> OUR <span>CHAIR</span></h1>
+    <p>Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit lectus felis, malesuada ultricies.
+    </p>
+    <a href="#">ZOBACZ WIĘCEJ</a>
+  </div>
+  <div class="arrow_right"></div>
+   </div>
+ </div>
+
+ <section class="mainsection">
+   <div class="container">
+   <article class="chair1">
+     <div class="backgroundtext">
+     <h5>Chair CLAIRE</h5>
+   </div>
+   </article>
+   <article class="chair2">
+     <div class="backgroundtext">
+     <h5>Chair MARGARITA</h5>
+   </div>
+   </article>
+   <article class="littletext">
+     <h5>Find all inputs</h5>
+     <p>Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit lectus felis, malesuada ultricies.
+     </p>
+   </article>
+ </div>
+ </section>
+<section class="pricelist container">
+  <h3>CENNIK</h3>
+<div class="container">
+ <div class="basic price_option">
+   <div class="circle"></div>
+   <h4>BASIC PLAN</h4>
+   <p class="price"><span>85<sup>99</sup><br>PLN/MSC<span></p>
+   <div class="range">
+
+       <p>Zakup towaru+dowóz</p>
+       <p>Serwis</p>
+
+   </div>
+  <a class="button base" href="#">DOŁĄCZ</a>
+ </div>
+ <div class="standard price_option">
+   <div class="circle"></div>
+   <h4>STANDARD PLAN</h4>
+   <p class="price"><span>95<sup>99</sup><br>PLN/MSC</span></p>
+     <div class="range">
+       <p>Zakup towaru+dowóz</p>
+       <p>Serwis</p>
+       <p>Gwarancja 5 lat</p>
+     </div>
+  <a class="button standy" href="#">DOŁĄCZ</a>
+ </div>
+ <div class="advance price_option">
+   <div class="circle"></div>
+   <h4>ADVANCE PLAN</h4>
+   <p class="price"><span>211<sup>00</sup><br>PLN/MSC</span></p>
+     <div class="range">
+       <p>Zakup towaru+dowóz</p>
+       <p>Serwis</p>
+       <p>Gwarancja 6 lat</p>
+       <p>Porada projektanta</p>
+     </div>
+  <a class="button advanced" href="#">DOŁĄCZ</a>
+ </div>
+</div>
+</section>
+<div class="container">
+ <form class="contact_form">
+  <h3>KONTAKT</h3>
+  <input class='name input' name="name" placeholder="Imię"type="text"><br>
+  <input class="email input" name="email" placeholder="Email" type="email"><br>
+  <textarea class="message input" name="message" placeholder="Wiadomość" cols="20" rows="10"></textarea><br>
+  <img class='message-img'src="images/red_chair2.png">
+  <input id='checkbox' type="checkbox" name="agreement">
+
+  <label class='button-label' for='checkbox'>
+  <img class='checkbox unchecked' src="images/unchecked.png" alt="unchecked checkbox">
+  <img class='checkbox checked' src="images/checked.png" alt="checked checkbox">
+  Zgadzam się na przetwarzanie danych osobowych</label><br>
+  <input type="submit" class="button_form" value="Wyślij"><br>
+</form>
+</div>
+
+<footer>
+  <div class="container">
+  <p class="copyright">Copyright 2014 | All rights reserved * Sit On Chair</p>
+  <ul class="social">
+    <li><a href="#"><img class="social-icon"  src="images/facebook.svg"></a></li>
+    <li><a href="#"><img class="social-icon" src="images/vimeo.svg"></a></li>
+    <li><a href="#"><img class="social-icon" src="images/pinterest.svg"></a></li>
+    <li><a href="#"><img class="social-icon" src="images/twitter.svg"></a></li>
+  </ul>
+  <h4 class="logo-footer"> SIT ON CHAIR</h4>
+</div>
+</footer>
+
+</body>
+
+</html>
+
+<!-- nawigacja : ul w li, ktora domylsnie ma dispaly none
+hover, display block, zagniezdzona lista musi byc absolute, left:50%, translate od x -50%;
+trojkat w submenu, albo borderami div w css alb obrocony  kwadrat- moze byc before w css;
+musi byc after/before transparent zyby wypelnial przestrzen miedzy submenu a glownym menu
+musi byc cos co bedzie zabierao przestrzen, moze byc np paddin; checkbox: powinin byc chcekcbox i div z tlem
+jak checkbox, jeden na wierchu drugiego, chcecbox powinien byc przezroczysty, input:checked + div zminan tla -->
