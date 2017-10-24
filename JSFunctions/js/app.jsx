@@ -47,7 +47,7 @@ hide() {
   render() {
     return(
     <div>
-    <button className="start">Start your function</button>
+    <button className="start" id='kliknij'>Start your function</button>
     <p className='info' onClick={(e)=>this.hide(e)}>Iteration is a process of repeating a given function n times. Insert the number
     which will indicate how many times you want your function to repeat.(Click on me to hide me) </p>
     </div>

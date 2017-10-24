@@ -6,6 +6,7 @@
 .row {
  display: flex;
  flex-wrap: nowrap;
+ justify-content: center;
  }
  [class*='col-'] {
    min-height: 1px;
