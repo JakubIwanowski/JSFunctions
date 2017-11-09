@@ -149,7 +149,7 @@ header {
   color: #ffffff;
   text-align: left;
   line-height: 1.5;
-  background: url("../images/people.jpg");
+  background: url("../images/przeformatowane/people.jpg");
   background-position: center;
   background-size: cover;
   background-attachment: fixed;
@@ -209,7 +209,8 @@ footer {
   width: 100%;
   color: #ffffff;
   font-weight: bold;
-  line-height: 1.3; }
+  line-height: 1.3;
+  padding-bottom: 1vh; }
   footer h2 {
     font-size: 3vh;
     margin-bottom: 1vh; }
@@ -287,8 +288,7 @@ footer {
       -webkit-transform: translateX(-28%);
       transform: translateX(-28%);
       width: 131px;
-      height: 0;
-      transition: height 1s linear; }
+      transition: margin-top 1s linear; }
       header .navigation.menu .menu-list li {
         background: #000000;
         padding: 9% 15%;
