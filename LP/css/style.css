@@ -192,10 +192,10 @@ header {
       .image-gallery .grid-container .row .arrow-next:hover, .image-gallery .grid-container .row .arrow-prev:hover {
         color: #a91919; }
     .image-gallery .grid-container .row .arrow-next {
-      margin: 16vh 52vh;
+      margin: 16vh 49vh;
       text-shadow: 7px 1px 9px #262B30; }
     .image-gallery .grid-container .row .arrow-prev {
-      margin: 16vh 4vh;
+      margin: 16vh 6vh;
       text-shadow: -7px 1px 9px #262B30; }
 
 #map {
