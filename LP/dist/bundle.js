@@ -78,81 +78,57 @@ module.exports = __webpack_require__(2);
 "use strict";
 
 
-document.addEventListener('DOMContentLoaded', function () {
- var images = $('.gallery-element');
-  var next = $('.arrow-next');
-  var prev = $('.arrow-prev');
-  var count = 1;
+  document.addEventListener('DOMContentLoaded', function() {
+ let images = $('.gallery-element');
+ let next = $('.arrow-next');
+ let prev = $('.arrow-prev');
 
-
-$(images[0]).clone().insertAfter($(images[images.length -1])).removeClass('active');
-$(images[images.length -1]).clone().insertBefore($(images[0]));
-images = $('.gallery-element');
-$(images[0]).css({marginLeft: '-100%'});
-  next.click(function () {
-    $('.active').first().animate({ marginLeft: '-100%' }).removeClass('active').next('.gallery-element').addClass('active');
-    if (count == 1) {
-      $(images[images.length - 1]).css('marginLeft', '0px');
-    }
+ let count = 1;
+  next.click(()=> {
+    $('.active').animate({marginLeft: '-101%'}).removeClass('active').next('.gallery-element').addClass('active');
     count = count + 1;
-    if (count == images.length - 1) {
+    if (count > images.length) {
       count = 1;
-
-        $(images[images.length - 1]).removeClass('active');
-        $(images[1]).addClass('active');
-        setTimeout(() => {
-      images.css('marginLeft', '0px');
-    $(images[0]).css({marginLeft: '-100%'});
-
-  },400);
+      images.animate({marginLeft: '0%'});
+      $(images[0]).addClass('active');
     }
 
-    console.log(count);
-  });
-  prev.click(function () {
 
-    $('.active').removeClass('active').prev('.gallery-element').animate({ marginLeft: '0%' }).addClass('active');
-    count = count - 1;
-    if (count < 1) {
-      count = images.length - 2;
+      console.log(count);
+  })
+  prev.click(()=> {
 
-      $(images).removeClass('active');
-      $(images[images.length - 2]).addClass('active');
-      setTimeout(() => {
-    images.css('marginLeft', '-100%' );
-    $(images[0]).css({marginLeft: '-100%'});
-    $(images[images.length - 1]).css({marginLeft: '0px'});
-    $(images[images.length - 2]).css({marginLeft: '0px'});
+    $('.active').removeClass('active').prev('.gallery-element').animate({marginLeft: '0%'}).addClass('active');
+  count = count - 1;
 
+        if (count < 1) {
+          count = images.length;
+          images.animate({marginLeft: '-101%'});
+          $(images[images.length - 1]).addClass('active').animate({marginLeft: '0%'});
+        }
+        console.log(count);
+  })
+setInterval(()=>{
+  $('.active').animate({marginLeft: '-101%'}).removeClass('active').next('.gallery-element').addClass('active');
+  count = count + 1;
+  if (count > images.length) {
+    count = 1;
+    images.animate({marginLeft: '0%'});
+    $(images[0]).addClass('active');
+  }
+},5000);
 
-},500);
-    }
-    console.log(count);
-  });
-//   setInterval(function () {
-//     $('.active').first().animate({ marginLeft: '-101%' }).removeClass('active').next('.gallery-element').addClass('active');
-//     count = count + 1;
-//     if (count == 1) {
-//       $(images[images.length - 1]).css('marginLeft', '0px');
-//     }
-//     if (count == images.length - 1) {
-//       count = 1;
-
-//         $(images[images.length - 1]).removeClass('active');
-//         $(images[1]).addClass('active');
-//         setTimeout(() => {
-//       images.css('marginLeft', '0px');
-//     $(images[0]).css({marginLeft: '-100%'});
-
-//   },400);
-// }
-//   }, 5000);
-
-  $('a[href*="#"]')
+$('a[href*="#"]')
   // Remove links that don't actually link to anything
-  .not('[href="#"]').not('[href="#0"]').click(function (event) {
+  .not('[href="#"]')
+  .not('[href="#0"]')
+  .click(function(event) {
     // On-page links
-    if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+    if (
+      location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '')
+      &&
+      location.hostname == this.hostname
+    ) {
       // Figure out element to scroll to
       var target = $(this.hash);
       target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
@@ -162,23 +138,23 @@ $(images[0]).css({marginLeft: '-100%'});
         event.preventDefault();
         $('html, body').animate({
           scrollTop: target.offset().top
-        }, 1000, function () {
+        }, 1000, function() {
           // Callback after animation
           // Must change focus!
           var $target = $(target);
           $target.focus();
-          if ($target.is(":focus")) {
-            // Checking if the target was focused
+          if ($target.is(":focus")) { // Checking if the target was focused
             return false;
           } else {
-            $target.attr('tabindex', '-1'); // Adding tabindex for elements not focusable
+            $target.attr('tabindex','-1'); // Adding tabindex for elements not focusable
             $target.focus(); // Set focus again
           };
         });
       }
     }
   });
-});
+  });
+
 
 /***/ }),
 /* 2 */
