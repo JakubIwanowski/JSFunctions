@@ -79,18 +79,32 @@ module.exports = __webpack_require__(2);
 
 
 document.addEventListener('DOMContentLoaded', function () {
-  var images = $('.gallery-element');
+ var images = $('.gallery-element');
   var next = $('.arrow-next');
   var prev = $('.arrow-prev');
-
   var count = 1;
+
+
+$(images[0]).clone().insertAfter($(images[images.length -1])).removeClass('active');
+$(images[images.length -1]).clone().insertBefore($(images[0]));
+images = $('.gallery-element');
+$(images[0]).css({marginLeft: '-100%'});
   next.click(function () {
-    $('.active').animate({ marginLeft: '-101%' }).removeClass('active').next('.gallery-element').addClass('active');
+    $('.active').first().animate({ marginLeft: '-100%' }).removeClass('active').next('.gallery-element').addClass('active');
+    if (count == 1) {
+      $(images[images.length - 1]).css('marginLeft', '0px');
+    }
     count = count + 1;
-    if (count > images.length) {
+    if (count == images.length - 1) {
       count = 1;
-      images.animate({ marginLeft: '0%' });
-      $(images[0]).addClass('active');
+
+        $(images[images.length - 1]).removeClass('active');
+        $(images[1]).addClass('active');
+        setTimeout(() => {
+      images.css('marginLeft', '0px');
+    $(images[0]).css({marginLeft: '-100%'});
+
+  },400);
     }
 
     console.log(count);
@@ -99,22 +113,39 @@ document.addEventListener('DOMContentLoaded', function () {
 
     $('.active').removeClass('active').prev('.gallery-element').animate({ marginLeft: '0%' }).addClass('active');
     count = count - 1;
-
     if (count < 1) {
-      count = images.length;
-      images.animate({ marginLeft: '-101%' });
-      $(images[images.length - 1]).addClass('active').animate({ marginLeft: '0%' });
+      count = images.length - 2;
+
+      $(images).removeClass('active');
+      $(images[images.length - 2]).addClass('active');
+      setTimeout(() => {
+    images.css('marginLeft', '-100%' );
+    $(images[0]).css({marginLeft: '-100%'});
+    $(images[images.length - 1]).css({marginLeft: '0px'});
+    $(images[images.length - 2]).css({marginLeft: '0px'});
+
+
+},500);
     }
     console.log(count);
   });
   setInterval(function () {
-    $('.active').animate({ marginLeft: '-101%' }).removeClass('active').next('.gallery-element').addClass('active');
+    $('.active').first().animate({ marginLeft: '-101%' }).removeClass('active').next('.gallery-element').addClass('active');
     count = count + 1;
-    if (count > images.length) {
-      count = 1;
-      images.animate({ marginLeft: '0%' });
-      $(images[0]).addClass('active');
+    if (count == 1) {
+      $(images[images.length - 1]).css('marginLeft', '0px');
     }
+    if (count == images.length - 1) {
+      count = 1;
+
+        $(images[images.length - 1]).removeClass('active');
+        $(images[1]).addClass('active');
+        setTimeout(() => {
+      images.css('marginLeft', '0px');
+    $(images[0]).css({marginLeft: '-100%'});
+
+  },400);
+}
   }, 5000);
 
   $('a[href*="#"]')
