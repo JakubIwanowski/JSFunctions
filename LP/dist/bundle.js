@@ -129,24 +129,24 @@ $(images[0]).css({marginLeft: '-100%'});
     }
     console.log(count);
   });
-  setInterval(function () {
-    $('.active').first().animate({ marginLeft: '-101%' }).removeClass('active').next('.gallery-element').addClass('active');
-    count = count + 1;
-    if (count == 1) {
-      $(images[images.length - 1]).css('marginLeft', '0px');
-    }
-    if (count == images.length - 1) {
-      count = 1;
+//   setInterval(function () {
+//     $('.active').first().animate({ marginLeft: '-101%' }).removeClass('active').next('.gallery-element').addClass('active');
+//     count = count + 1;
+//     if (count == 1) {
+//       $(images[images.length - 1]).css('marginLeft', '0px');
+//     }
+//     if (count == images.length - 1) {
+//       count = 1;
 
-        $(images[images.length - 1]).removeClass('active');
-        $(images[1]).addClass('active');
-        setTimeout(() => {
-      images.css('marginLeft', '0px');
-    $(images[0]).css({marginLeft: '-100%'});
+//         $(images[images.length - 1]).removeClass('active');
+//         $(images[1]).addClass('active');
+//         setTimeout(() => {
+//       images.css('marginLeft', '0px');
+//     $(images[0]).css({marginLeft: '-100%'});
 
-  },400);
-}
-  }, 5000);
+//   },400);
+// }
+//   }, 5000);
 
   $('a[href*="#"]')
   // Remove links that don't actually link to anything
